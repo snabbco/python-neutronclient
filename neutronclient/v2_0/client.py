@@ -154,6 +154,8 @@ class Client(object):
     network_path = "/networks/%s"
     ports_path = "/ports"
     port_path = "/ports/%s"
+    qos_path = "/qoses"
+    qoses_path = "/qoses/%s"
     subnets_path = "/subnets"
     subnet_path = "/subnets/%s"
     quotas_path = "/quotas"
@@ -238,6 +240,7 @@ class Client(object):
                      'members': 'member',
                      'health_monitors': 'health_monitor',
                      'quotas': 'quota',
+                     'qoses': 'qos',
                      'service_providers': 'service_provider',
                      'firewall_rules': 'firewall_rule',
                      'firewall_policies': 'firewall_policy',
@@ -1109,6 +1112,27 @@ class Client(object):
         """Fetches information of a certain metering label rule."""
         return self.get(self.metering_label_rule_path %
                         (metering_label_rule), params=_params)
+
+    @APIParamsCall
+    def delete_qos(self, qos):
+        return self.delete(self.qoses_path % (qos))
+
+    @APIParamsCall
+    def create_qos(self, body=None):
+        return self.post(self.qos_path, body=body)
+
+    @APIParamsCall
+    def list_qoses(self, retrieve_all=True, **_params):
+        return self.list('qoses', self.qos_path, retrieve_all, **_params)
+
+    @APIParamsCall
+    def show_qos(self, qos, **_params):
+        return self.get(self.qoses_path % (qos), params=_params)
+
+    @APIParamsCall
+    def update_qos(self, qos, body=None):
+        """Updates a firewall."""
+        return self.put(self.qos_path % (qos), body=body)
 
     def __init__(self, **kwargs):
         """Initialize a new client for the Neutron v2.0 API."""

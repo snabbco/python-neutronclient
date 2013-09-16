@@ -30,6 +30,7 @@ class CLITestV20LbMemberJSON(test_cli20.CLITestV20Base):
         """lb-member-create with mandatory params only."""
         resource = 'member'
         cmd = member.CreateMember(test_cli20.MyApp(sys.stdout), None)
+
         address = '10.0.0.1'
         port = '8080'
         tenant_id = 'my-tenant'

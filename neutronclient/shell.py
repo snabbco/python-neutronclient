@@ -48,6 +48,7 @@ from neutronclient.neutron.v2_0.nsx import networkgateway
 from neutronclient.neutron.v2_0.nsx import qos_queue
 from neutronclient.neutron.v2_0 import policyprofile
 from neutronclient.neutron.v2_0 import port
+from neutronclient.neutron.v2_0.qos import qos
 from neutronclient.neutron.v2_0 import quota
 from neutronclient.neutron.v2_0 import router
 from neutronclient.neutron.v2_0 import securitygroup
@@ -170,6 +171,11 @@ COMMAND_V2 = {
     'queue-delete': qos_queue.DeleteQoSQueue,
     'queue-show': qos_queue.ShowQoSQueue,
     'queue-list': qos_queue.ListQoSQueue,
+    'qos-create': qos.CreateQoS,
+    'qos-delete': qos.DeleteQoS,
+    'qos-list': qos.ListQoS,
+    'qos-show': qos.ShowQoS,
+    'qos-update': qos.UpdateQoS,
     'agent-list': agent.ListAgent,
     'agent-show': agent.ShowAgent,
     'agent-delete': agent.DeleteAgent,
